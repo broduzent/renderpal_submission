@@ -16,7 +16,9 @@ def submit_render(
     import_set=None,
     project=None,
     chunk_size=100,
-    dry_run=False
+    dry_run=False,
+    dependant_job=None,
+    dependency_type=0,
     ):
     """Submits a render to renderpal and returns job id of render."""
     cmd = assemble_cmd(
@@ -26,7 +28,9 @@ def submit_render(
         renderer,
         import_set=import_set,
         project=project,
-        chunk_size=chunk_size
+        chunk_size=chunk_size,
+        dependant_job=dependant_job,
+        dependency_type=dependency_type,
     )
 
     LOGGER.info(f"Submitting to Renderpal with: {cmd}")
@@ -48,7 +52,9 @@ def assemble_cmd(
     renderer,
     import_set=None,
     project=None,
-    chunk_size=100
+    chunk_size=100,
+    dependant_job=None,
+    dependency_type=0,
     ):
     cmd = [
         get_renderpal_exe(),
@@ -64,6 +70,10 @@ def assemble_cmd(
     
     if project:
         cmd.append(f'-nj_project="{project}"')
+
+    if dependant_job:
+        cmd.append(f"-nj_dependency {dependant_job}")
+        cmd.append(f"-nj_deptype {dependency_type}")
 
     return " ".join(cmd)
 
