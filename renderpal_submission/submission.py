@@ -8,7 +8,7 @@ from pathlib import Path
 LOGGER = logging.getLogger("Render Submission")
 
 
-def submit_render(
+def submit(
     render_name,
     scene_path,
     username,
@@ -39,13 +39,19 @@ def submit_render(
     LOGGER.info(f"Submitting to Renderpal with: {cmd}")
 
     if dry_run:
-        return
+        LOGGER.info("Dry Run enabled, not submitting to Renderpal")
+        return None
 
     child = subprocess.Popen(cmd, stdout=subprocess.PIPE)
-    rc = child.returncode
-    LOGGER.info(f"Submitted {nice_name} ({rc})")
+    stdout_data, stderr_data = child.communicate()
 
-    return rc
+    if child.returncode == 1:
+        LOGGER.error(f"Submission failed with {stderr_data}")
+        return None
+
+    job_id = child.returncode
+    LOGGER.info(f"Submitted {render_name} (id: {job_id})")
+    return job_id
 
 
 def assemble_cmd(
