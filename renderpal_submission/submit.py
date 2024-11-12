@@ -61,10 +61,9 @@ def assemble_cmd(
 
     if import_set:
         cmd.append(f'-importset="{import_set}"')
+    
     if project:
-        cmd.append()
-
-    cmd.append('-nj_project="Frogging Hell"')
+        cmd.append(f'-nj_project="{project}"')
 
     return " ".join(cmd)
 
