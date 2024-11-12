@@ -1,0 +1,7 @@
+<RenderSet>
+    <Values>
+        <frames>
+            <Value>$start_frame/$end_frame</Value>
+        </frames>
+    </Values>
+</RenderSet>
