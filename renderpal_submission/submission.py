@@ -130,8 +130,10 @@ def _assemble_cmd(job_name, scene_path, login, renderer, **kwargs):
                 cmd.append(f'{cmd_flag}="{v}"')
         elif isinstance(value, bool):
             cmd.append(cmd_flag)
-        else:
+        elif isinstance(value, str):
             cmd.append(f'{cmd_flag}="{value}"')
+        else:
+            cmd.append(f'{cmd_flag} {value}')
 
     cmd.append(scene_path)
 
