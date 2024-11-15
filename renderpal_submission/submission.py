@@ -130,6 +130,10 @@ def _assemble_cmd(job_name, scene_path, login, renderer, **kwargs):
                 cmd.append(f'{cmd_flag}="{v}"')
         elif isinstance(value, bool):
             cmd.append(cmd_flag)
+        elif flag in ["splitmode"]:
+            cmd.append(f'{cmd_flag} "{value}"')
+        elif flag in ["project"]:
+            cmd.append(f'{cmd_flag} {value}')
         elif isinstance(value, str):
             cmd.append(f'{cmd_flag}="{value}"')
         else:
