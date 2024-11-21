@@ -26,5 +26,7 @@
   "firstlastfirst": "-nj_firstlastfirst",
   "blockedclients": "-nj_blockedclients",
   "color": "-nj_color",
-  "urgent": "-nj_urgent"
+  "urgent": "-nj_urgent",
+  "outdir": "-outdir",
+  "outfile": "-outfile"
 }

@@ -32,7 +32,7 @@
 			<Value>$start_frame</Value>
 		</start_number>
 		<vf>
-			<Value>format=yuv420p</Value>
+			<Value>scale=out_range=full,format=yuv420p</Value>
 		</vf>
 	</Values>
 </RenderSet>

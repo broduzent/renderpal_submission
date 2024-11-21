@@ -1,0 +1,22 @@
+<RenderSet>
+    <Values>
+        <frames>
+            <Value>1001-1200</Value>
+        </frames>
+        <width>
+            <Value>2048</Value>
+        </width>
+        <height>
+            <Value>1152</Value>
+        </height>
+        <camera>
+			<Value>tt_setup:Turntable_camera</Value>
+		</camera>
+        <outdir>
+			<Value>$out_dir</Value>
+		</outdir>
+		<outfile>
+			<Value>$out_file</Value>
+		</outfile>
+    </Values>
+</RenderSet>
