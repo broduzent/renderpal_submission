@@ -10,9 +10,9 @@
 		<asset>
 			<Value>$asset</Value>
 		</asset>
-		<gazuroot>
+		<gazupath>
 		    <Value>$gazu_root</Value>
-		</gazuroot>
+		</gazupath>
 		<pipeconfig>
 		    <Value>$pipeconfig</Value>
 		</pipeconfig>
