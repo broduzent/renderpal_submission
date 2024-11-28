@@ -1,0 +1,35 @@
+<RenderSet>
+	<Renderer>Python3/Kitsu Asset Publish</Renderer>
+	<Values>
+		<scene>
+			<Value>Python3</Value>
+		</scene>
+		<pythonscript>
+			<Value>$pythonscript</Value>
+		</pythonscript>
+		<sequence>
+			<Value>$sequence_name</Value>
+		</sequence>
+		<shot>
+			<Value>$shot_name</Value>
+		</shot>
+		<gazupath>
+		    <Value>$gazu_root</Value>
+		</gazupath>
+		<pipeconfig>
+		    <Value>$pipeconfig</Value>
+		</pipeconfig>
+		<clippath>
+			<Value>$clippath</Value>
+		</clippath>
+		<version>
+			<Value>$version</Value>
+		</version>
+		<task>
+			<Value>$task_name</Value>
+		</task>
+		<user>
+			<Value>$user_name</Value>
+		</user>
+	</Values>
+</RenderSet>
