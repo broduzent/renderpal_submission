@@ -1,0 +1,22 @@
+<RenderSet>
+    <Values>
+        <frames>
+            <Value>$startframe-$endframe</Value>
+        </frames>
+        <width>
+            <Value>2048</Value>
+        </width>
+        <height>
+            <Value>1152</Value>
+        </height>
+        <camera>
+			<Value>$render_cam</Value>
+		</camera>
+        <outdir>
+			<Value>$out_dir</Value>
+		</outdir>
+		<outfile>
+			<Value>$out_file</Value>
+		</outfile>
+    </Values>
+</RenderSet>
