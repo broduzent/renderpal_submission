@@ -19,11 +19,17 @@ nuke.root()['fps'].setValue(25)
 r = nuke.nodes.Read()
 w = nuke.nodes.Write()
 w.setInput( 0, r )
+w.knob("file_type").setValue("mov")
 print("Node setup done")
 r.knob("file").setValue(in_pattern)
 r.knob("first").setValue(in_frame)
 r.knob("last").setValue(out_frame)
 w.knob("file").setValue(out_file)
+try:
+    w.knob("mov64_fps").setValue(25)
+    w.knob("mov64_codec").setValue(14)  # H.264
+except:
+    print("Not setting mov fps")
 print("Path setup done")
 nuke.execute("Write1", in_frame, out_frame)
 print("All done!")
