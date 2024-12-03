@@ -1,0 +1,20 @@
+<RenderSet>
+	<Renderer>Frog FFmpeg/Default version</Renderer>
+	<Values>
+		<in_pattern>
+		    <Value>$in_pattern</Value>
+		</in_pattern>
+		<out_file>
+		    <Value>$out_file</Value>
+		</out_file>
+		<in_frame>
+		    <Value>$start_frame</Value>
+		</in_frame>
+		<out_frame>
+		    <Value>$end_frame</Value>
+		</out_frame>
+		<pythonscript>
+		    <Value>$pythonscript</Value>
+		</pythonscript>
+	</Values>
+</RenderSet>
