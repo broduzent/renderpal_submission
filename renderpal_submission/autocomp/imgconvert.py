@@ -8,6 +8,8 @@ in_pattern, out_file, in_frame, out_frame = sys.argv[1:]
 
 in_frame = int(in_frame[-4:])
 out_frame = int(out_frame[-4:])
+in_pattern = in_pattern.replace("\\", "/")
+out_file = out_file.replace("\\", "/")
 
 print(f"Reading frames from {in_pattern}")
 print(f"Using frames {in_frame} to {out_frame}")
@@ -17,7 +19,7 @@ r = nuke.nodes.Read()
 w = nuke.nodes.Write()
 w.setInput( 0, r )
 print("Node setup done")
-r.knob("file").setValue(in_pattern.replace("\\", "/"))
+r.knob("file").setValue(in_pattern)
 r.knob("first").setValue(in_frame)
 r.knob("last").setValue(out_frame)
 w.knob("file").setValue(out_file)

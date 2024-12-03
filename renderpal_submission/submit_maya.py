@@ -74,7 +74,7 @@ def submit():
     imgconvert_set = submission.create_renderpal_set(
         "imgconvert_renderset",
         imgconvert_renderset_dest,
-        in_pattern=f'{exr_path}\\{outfile}.####.exr'.replace("\\", "/"),
+        in_pattern=f'{exr_path}/{outfile}.####.exr'.replace("\\", "/"),
         out_file=f"{mp4_path}/{outfile}.mp4".replace("\\", "/"),
         start_frame=f"frame{int(cmds.getAttr('defaultRenderGlobals.startFrame'))}",
         end_frame=f"frame{int(cmds.getAttr('defaultRenderGlobals.endFrame'))}",
