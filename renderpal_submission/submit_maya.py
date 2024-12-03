@@ -75,9 +75,9 @@ def submit():
         "imgconvert_renderset",
         imgconvert_renderset_dest,
         in_pattern=f'{exr_path}\\{outfile}.####.exr'.replace("\\", "/"),
-        out_file=f"{outfile}.mp4",
-        start_frame=f"frame{cmds.getAttr('defaultRenderGlobals.startFrame')}",
-        end_frame=f"frame{cmds.getAttr('defaultRenderGlobals.endFrame')}",
+        out_file=f"{mp4_path}/{outfile}.mp4".replace("\\", "/"),
+        start_frame=f"frame{int(cmds.getAttr('defaultRenderGlobals.startFrame'))}",
+        end_frame=f"frame{int(cmds.getAttr('defaultRenderGlobals.endFrame'))}",
         pythonscript="L:/krasse_robots/00_Pipeline/Packages/renderpal_submission/renderpal_submission/autocomp/imgconvert.py"
     )
     imgconvert_jid = submission.submit(
