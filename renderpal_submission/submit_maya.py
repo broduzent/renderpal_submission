@@ -163,7 +163,8 @@ def run_precheck(render_path, exr_path):
             cmds.setAttr("defaultRenderGlobals.startFrame", cmds.playbackOptions(q=True, min=True))
             cmds.setAttr("defaultRenderGlobals.endFrame", cmds.playbackOptions(q=True, max=True))
 
-    if not "render_cam" in cmds.ls(cameras=True):
+    cameras = cmds.ls(cameras=True)
+    if not [camera for camera in cameras if "render_cam" in camera]:
         cmds.confirmDialog(
             title="No Render Cam",
             message=f"There is no render cam in the scene. Aborting render submission.",
