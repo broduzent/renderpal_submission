@@ -1,10 +1,12 @@
+
 import json
-import os
 import logging
+import os
 
 from maya import cmds
 from pymel import core as pm
 from renderpal_submission import submission
+
 
 logging.basicConfig(level=logging.INFO)
 LOGGER = logging.getLogger("Render Submission")
@@ -44,6 +46,12 @@ def submit():
     os.makedirs(exr_path, exist_ok=True)
     os.makedirs(mp4_path, exist_ok=True)
 
+    render_camera = select_render_cam()
+
+    cmds.setAttr("defaultRenderGlobals.putFrameBeforeExt", 1)
+    cmds.setAttr("defaultRenderGlobals.exrCompression", 5)
+    cmds.SaveScene()
+
     renderset_dest = f"L:/krasse_robots/00_Pipeline/Rendersets/shot_renderset_{outfile}.rset"
     renderset = submission.create_renderpal_set(
         "shot_renderset",
@@ -52,7 +60,7 @@ def submit():
         out_file=outfile,
         startframe=cmds.getAttr("defaultRenderGlobals.startFrame"),
         endframe=cmds.getAttr("defaultRenderGlobals.endFrame"),
-        render_cam="testcamera",  # ToDo
+        render_cam=render_camera,
     )
     render_jid = submission.submit(
         renderjob_name,
@@ -132,6 +140,11 @@ def assemble_render_set_name(scene_path):
 def run_precheck(render_path, exr_path):
     status = True
     if not os.path.isdir(render_path):
+        cmds.confirmDialog(
+            title="Pipeline path issue",
+            message=f"The shot seems not to be correctly in pipeline. Aborting render submission.",
+            button=["Beep boop :("]
+        )
         return False
 
     rs_framerange = (cmds.getAttr("defaultRenderGlobals.startFrame"), cmds.getAttr("defaultRenderGlobals.endFrame"))
@@ -150,6 +163,14 @@ def run_precheck(render_path, exr_path):
             cmds.setAttr("defaultRenderGlobals.startFrame", cmds.playbackOptions(q=True, min=True))
             cmds.setAttr("defaultRenderGlobals.endFrame", cmds.playbackOptions(q=True, max=True))
 
+    if not "render_cam" in cmds.ls(cameras=True):
+        cmds.confirmDialog(
+            title="No Render Cam",
+            message=f"There is no render cam in the scene. Aborting render submission.",
+            button=["Beep boop :("]
+        )
+        return False
+
     if os.path.isdir(exr_path):
         dialog_result = cmds.confirmDialog(
             title="Rerender version?",
@@ -159,6 +180,20 @@ def run_precheck(render_path, exr_path):
             defaultButton="Yes",
             cancelButton="No",
         )
-        status = True if dialog_result == "Yes" else False
+        status = False if dialog_result == "No" else status
 
     return status
+
+
+def select_render_cam():
+    cameras = cmds.ls(cameras=True)
+    render_cams = [cmds.listRelatives(camera, parent=True)[0] for camera in cameras if "render_cam" in camera]
+    if len(render_cams) == 1:
+        return render_cams[0]
+    else:
+        dialog_result = cmds.confirmDialog(
+            title="Select Render Cam",
+            message="Please select the correct camera to render:",
+            button=render_cams
+        )
+        return dialog_result
