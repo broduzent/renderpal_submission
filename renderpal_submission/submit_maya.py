@@ -49,7 +49,7 @@ def submit():
     render_camera = select_render_cam()
 
     cmds.setAttr("defaultRenderGlobals.putFrameBeforeExt", 1)
-    cmds.setAttr("defaultRenderGlobals.exrCompression", 5)
+    cmds.setAttr("defaultRenderGlobals.exrCompression", 3)  # ZIP
     cmds.SaveScene()
 
     renderset_dest = f"L:/krasse_robots/00_Pipeline/Rendersets/shot_renderset_{outfile}.rset"
