@@ -1,4 +1,4 @@
-"""Converts any file to any other file (exr to mp4) from command line using nuke."""
+"""Converts any file to any other file (exr to mp4, 25fps) from command line using nuke."""
 
 import nuke
 import sys
@@ -15,6 +15,7 @@ print(f"Reading frames from {in_pattern}")
 print(f"Using frames {in_frame} to {out_frame}")
 print(f"Writing frames to {out_file}")
 
+nuke.root()['fps'].setValue(25)
 r = nuke.nodes.Read()
 w = nuke.nodes.Write()
 w.setInput( 0, r )
@@ -24,5 +25,5 @@ r.knob("first").setValue(in_frame)
 r.knob("last").setValue(out_frame)
 w.knob("file").setValue(out_file)
 print("Path setup done")
-nuke.execute("Write1")
+nuke.execute("Write1", in_frame, out_frame)
 print("All done!")
