@@ -45,7 +45,7 @@ def submit():
     os.makedirs(mp4_path, exist_ok=True)
 
     render_camera = select_render_cam()
-    apply_render_settings()
+    cmds.SaveScene()
 
     renderset_dest = f"L:/krasse_robots/00_Pipeline/Rendersets/shot_renderset_{outfile}.rset"
     renderset = submission.create_renderpal_set(
@@ -194,11 +194,3 @@ def select_render_cam():
             button=render_cams
         )
         return dialog_result
-
-
-def apply_render_settings():
-    cmds.setAttr("defaultArnoldDriver.exrCompression", 9)  # DWAB
-    cmds.setAttr("defaultArnoldDriver.halfPrecision", 1)
-    cmds.setAttr("defaultArnoldDriver.mergeAOVs", 1)
-    cmds.setAttr("defaultRenderGlobals.putFrameBeforeExt", 1)
-    cmds.SaveScene()
