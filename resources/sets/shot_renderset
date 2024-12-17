@@ -4,10 +4,10 @@
             <Value>$startframe-$endframe</Value>
         </frames>
         <width>
-            <Value>2048</Value>
+            <Value>2112</Value>
         </width>
         <height>
-            <Value>1152</Value>
+            <Value>1188</Value>
         </height>
         <camera>
 			<Value>$render_cam</Value>

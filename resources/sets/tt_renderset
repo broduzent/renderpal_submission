@@ -4,10 +4,10 @@
             <Value>1001-1200</Value>
         </frames>
         <width>
-            <Value>2048</Value>
+            <Value>2112</Value>
         </width>
         <height>
-            <Value>1152</Value>
+            <Value>1188</Value>
         </height>
         <camera>
 			<Value>tt_setup:Turntable_camera</Value>
