@@ -13,6 +13,9 @@
 		<out_frame>
 		    <Value>$end_frame</Value>
 		</out_frame>
+		<colorspace>
+		    <Value>$colorspace</Value>
+		</colorspace>
 		<pythonscript>
 		    <Value>$pythonscript</Value>
 		</pythonscript>
