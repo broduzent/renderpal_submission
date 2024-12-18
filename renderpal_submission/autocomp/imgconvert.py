@@ -30,7 +30,7 @@ r.knob("file").setValue(in_pattern)
 r.knob("first").setValue(in_frame)
 r.knob("last").setValue(out_frame)
 w.knob("file").setValue(out_file)
-w.knob("colorspace").setValue(cspace_dict[colorspace])
+w.knob("colorspace").setValue(cspace_dict[colorspace.lower()])
 try:
     w.knob("mov64_fps").setValue(25)
     w.knob("mov64_codec").setValue(14)  # H.264
