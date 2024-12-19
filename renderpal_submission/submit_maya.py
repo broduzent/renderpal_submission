@@ -78,7 +78,7 @@ def submit():
         out_file=f"{mp4_path}/{outfile}.mp4".replace("\\", "/"),
         start_frame=f"frame{int(cmds.getAttr('defaultRenderGlobals.startFrame'))}",
         end_frame=f"frame{int(cmds.getAttr('defaultRenderGlobals.endFrame'))}",
-        colorspace="linear",
+        colorspace="srgb",
         pythonscript="L:/krasse_robots/00_Pipeline/Packages/renderpal_submission/renderpal_submission/autocomp/imgconvert.py"
     )
     imgconvert_jid = submission.submit(
