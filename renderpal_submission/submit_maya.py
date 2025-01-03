@@ -63,7 +63,7 @@ def submit():
         "ca-user:polytopixel",
         "Arnold Renderer/CA Maya Arnold 2024",
         import_set=renderset,
-        splitmode="2,5",
+        splitmode="2,10",
         project="Robo",
         outdir=exr_path,
         outfile=outfile,
