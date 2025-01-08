@@ -47,13 +47,16 @@ print(f"Writing frames to {out_file}")
 
 nuke.root()['fps'].setValue(25)
 r = nuke.nodes.Read()
+c = nuke.nodes.Colorspace()
 w = nuke.nodes.Write()
-w.setInput(0, r)
-w.knob("file_type").setValue("mov")
+c.setInput(0, r)
+w.setInput(0, c)
 print("Node setup done")
 r.knob("file").setValue(in_pattern)
 r.knob("first").setValue(in_frame)
 r.knob("last").setValue(out_frame)
+c.knob("primary_in").setValue(19)  # ACES
+w.knob("file_type").setValue("mov")
 w.knob("file").setValue(out_file)
 w.knob("colorspace").setValue(cspace_dict[colorspace.lower()])
 try:
